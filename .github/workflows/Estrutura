@@ -1,0 +1,25 @@
+Site-da-Empresa/
+│
+├── index.html
+├── favicon.ico
+│
+├── assets/
+│   ├── css/
+│   │      style.css
+│   │      animations.css
+│   │      responsive.css
+│   │
+│   ├── js/
+│   │      main.js
+│   │      particles.js
+│   │      scroll.js
+│   │
+│   ├── img/
+│   │      logo.png
+│   │      hero.webp
+│   │      portfolio/
+│   │      icons/
+│   │
+│   └── fonts/
+│
+└── README.md
