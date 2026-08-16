@@ -4,23 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Título da Aba do Navegador -->
   <title>Charles Aranna - Cyber Tech Group</title>
-
-  <!-- Meta Tags para SEO (Melhora como o Google lê o seu site) -->
   <meta name="description" content="Ecossistemas cibernéticos avançados, proteção em tempo real e inteligência estratégica para sua infraestrutura corporativa.">
-  <meta name="author" content="Charles Aranna">
-  <meta name="keywords" content="Cibersegurança, Zero Trust, Nuvem Híbrida, Inteligência Artificial, Engenharia de Software">
-
-  <!-- Meta Tags para Redes Sociais (Gera aquele "card" com imagem ao enviar o link no WhatsApp/LinkedIn) -->
-  <meta property="og:title" content="Charles Aranna - Cyber Tech Group">
-  <meta property="og:description" content="Segurança & Tecnologia de Elite. Ecossistemas cibernéticos e proteção em tempo real.">
-  <meta property="og:image" content="1001086739.png">
-  <meta property="og:type" content="website">
-
-  <!-- Cor da barra superior do navegador em celulares (Deixando com o fundo escuro do seu site) -->
   <meta name="theme-color" content="#040810">
-  
+
+  <!-- Fontes do Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg-dark: #040810;
@@ -42,9 +34,12 @@
       background-color: var(--bg-dark);
       color: var(--chrome-text);
       overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
-    /* Cabeçalho Fixado */
+    /* === CABEÇALHO E NAVEGAÇÃO === */
     .cyber-header {
       position: fixed;
       top: 0;
@@ -74,27 +69,100 @@
     }
 
     .brand-title {
-      font-size: 1.2rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
       font-weight: 900;
       color: #FFF;
       letter-spacing: 2px;
       text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     }
 
     .brand-subtitle {
-      font-size: 0.65rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9rem;
       font-weight: 700;
+      color: var(--bg-dark);
+      background: var(--cyan-neon);
+      padding: 3px 10px;
+      border-radius: 4px;
+      letter-spacing: 4px;
+      display: inline-block;
+      margin-top: 6px;
+      box-shadow: 0 0 15px var(--cyan-glow);
+      text-transform: uppercase;
+    }
+
+    /* Navegação e Submenus */
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: #FFF;
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-link:hover {
       color: var(--cyan-neon);
-      letter-spacing: 3px;
+    }
+
+    /* Menu Dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--header-bg);
+      min-width: 200px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.8);
+      z-index: 1;
+      padding: 0.5rem 0;
+    }
+
+    .dropdown:hover .dropdown-content {
       display: block;
+    }
+
+    .dropdown-content a {
+      color: #A0AEC0;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(0, 240, 255, 0.1);
+      color: var(--cyan-neon);
+      padding-left: 20px;
     }
 
     .btn-budget {
       text-decoration: none;
       color: #000;
       background: var(--cyan-neon);
-      font-size: 0.85rem;
-      font-weight: 800;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       padding: 0.75rem 1.8rem;
@@ -110,7 +178,7 @@
       transform: translateY(-2px);
     }
 
-    /* Hero Section com Imagem e Movimento */
+    /* === SEÇÕES PRINCIPAIS === */
     .hero-section {
       min-height: 100vh;
       padding: 9rem 3rem 4rem 3rem;
@@ -123,7 +191,8 @@
     }
 
     .hero-content h1 {
-      font-size: 3rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.2rem;
       font-weight: 900;
       color: #FFF;
       line-height: 1.1;
@@ -145,7 +214,6 @@
       align-items: center;
     }
 
-    /* Animação de Flutuação e Brilho */
     .hero-img {
       width: 100%;
       max-width: 520px;
@@ -165,11 +233,12 @@
       100% { box-shadow: 0 0 45px rgba(0, 240, 255, 0.7); }
     }
 
-    /* Seção Interativa de Serviços */
+    /* === SERVIÇOS === */
     .interactive-services {
       padding: 5rem 3rem;
       max-width: 1440px;
       margin: 0 auto;
+      flex: 1;
     }
 
     .services-grid {
@@ -213,7 +282,8 @@
     }
 
     .card-title {
-      font-size: 1.2rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
       color: #FFF;
       margin-bottom: 0.75rem;
     }
@@ -224,7 +294,69 @@
       line-height: 1.5;
     }
 
-    /* Janela Dinâmica (Modal) */
+    /* === RODAPÉ (FOOTER) === */
+    .cyber-footer {
+      background: #020408;
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 3rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-col h4 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--cyan-neon);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+    }
+
+    .footer-col p, .footer-col a {
+      color: #94A3B8;
+      font-size: 0.95rem;
+      text-decoration: none;
+      line-height: 1.8;
+      display: block;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+      color: #FFF;
+      text-shadow: 0 0 8px var(--cyan-glow);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .social-links a {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      background: rgba(0, 240, 255, 0.1);
+      padding: 5px 15px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      color: var(--cyan-neon);
+    }
+
+    .social-links a:hover {
+      background: var(--cyan-neon);
+      color: #000;
+    }
+
+    /* === MODAL === */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -296,6 +428,7 @@
       border-radius: 4px;
       color: #FFF;
       outline: none;
+      font-family: inherit;
     }
 
     .form-group input:focus, .form-group textarea:focus {
@@ -305,7 +438,8 @@
 
     @media (max-width: 968px) {
       .hero-section { grid-template-columns: 1fr; text-align: center; }
-      .header-container { padding: 1rem; }
+      .header-container { flex-wrap: wrap; gap: 1rem; justify-content: center; padding: 1rem; }
+      .nav-menu { flex-wrap: wrap; justify-content: center; gap: 1rem; }
     }
   </style>
 </head>
@@ -320,7 +454,23 @@
           <span class="brand-subtitle">Cyber Tech Group</span>
         </div>
       </a>
-      <button class="btn-budget" onclick="openModal()">Solicitar Orçamento</button>
+      
+      <!-- Navegação com Submenu -->
+      <nav class="nav-menu">
+        <a href="#" class="nav-link">Home</a>
+        <div class="dropdown">
+          <a href="#servicos" class="nav-link">Soluções ▾</a>
+          <div class="dropdown-content">
+            <a href="#servicos">Infraestrutura & Redes</a>
+            <a href="#servicos">Fibra Óptica</a>
+            <a href="#servicos">Cibersegurança</a>
+            <a href="#servicos">Desenvolvimento & UX</a>
+          </div>
+        </div>
+        <a href="#contato" class="nav-link">Contato</a>
+      </nav>
+
+      <button class="btn-budget" onclick="openModal()">Orçamento</button>
     </div>
   </header>
 
@@ -337,11 +487,12 @@
   </section>
 
   <!-- Janela de Escolha Interativa -->
-  <section class="interactive-services">
-    <h2 style="color: #FFF; text-align: center; font-size: 2rem;">Selecione os Serviços Desejados</h2>
-    <p style="color: #94A3B8; text-align: center; margin-top: 0.5rem;">Clique nos cartões para personalizar seu pacote de soluções</p>
+  <section id="servicos" class="interactive-services">
+    <h2 style="font-family: 'Orbitron', sans-serif; color: #FFF; text-align: center; font-size: 2rem; text-transform: uppercase;">Catálogo de Serviços</h2>
+    <p style="color: #94A3B8; text-align: center; margin-top: 0.5rem;">Selecione os módulos para personalizar sua infraestrutura</p>
     
     <div class="services-grid">
+      <!-- Serviços Antigos -->
       <div class="service-card" onclick="toggleService(this, 'Cibersegurança Zero Trust')">
         <h3 class="card-title">Cibersegurança Zero Trust</h3>
         <p class="card-desc">Proteção contínua contra invasões, monitoramento SOC e mitigação de ameaças em tempo real.</p>
@@ -357,19 +508,66 @@
         <p class="card-desc">Migração segura para infraestrutura de alta disponibilidade e planos de recuperação rápida.</p>
       </div>
 
-      <div class="service-card" onclick="toggleService(this, 'Engenharia de Software Nativa')">
-        <h3 class="card-title">Engenharia de Software Nativa</h3>
-        <p class="card-desc">Desenvolvimento web e mobile sob medida com princípios de Security by Design.</p>
+      <div class="service-card" onclick="toggleService(this, 'Engenharia Nativa (SecByDesign)')">
+        <h3 class="card-title">Engenharia Nativa</h3>
+        <p class="card-desc">Desenvolvimento web e mobile sob medida com princípios avançados de Security by Design.</p>
+      </div>
+
+      <!-- NOVOS SERVIÇOS ADICIONADOS -->
+      <div class="service-card" onclick="toggleService(this, 'Redes de Computadores')">
+        <h3 class="card-title">Redes de Computadores</h3>
+        <p class="card-desc">Projeto e implementação de topologias de rede, roteamento avançado e segurança de perímetro.</p>
+      </div>
+
+      <div class="service-card" onclick="toggleService(this, 'Cabeamento Estruturado')">
+        <h3 class="card-title">Cabeamento Estruturado</h3>
+        <p class="card-desc">Organização de racks, infraestrutura física de alta performance e certificação de rede.</p>
+      </div>
+
+      <div class="service-card" onclick="toggleService(this, 'Fibra Óptica (FTTH)')">
+        <h3 class="card-title">Fibra Óptica & FTTH</h3>
+        <p class="card-desc">Planejamento de redes ópticas de alta velocidade e implantação de configurações em OLT/ONT.</p>
+      </div>
+
+      <div class="service-card" onclick="toggleService(this, 'UX/UI Designer')">
+        <h3 class="card-title">UX/UI Designer</h3>
+        <p class="card-desc">Mapeamento de jornada e criação de interfaces modernas, intuitivas e focadas na experiência do usuário.</p>
       </div>
     </div>
   </section>
+
+  <!-- Rodapé (Contato e Redes Sociais) -->
+  <footer id="contato" class="cyber-footer">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>Cyber Tech Group</h4>
+        <p>Soluções tecnológicas avançadas<br>para o futuro da sua empresa.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contato Direto</h4>
+        <a href="mailto:contato@charlesaranna.com">📧 contato@charlesaranna.com</a>
+        <a href="tel:+5500000000000">📞 (00) 00000-0000</a>
+      </div>
+      <div class="footer-col">
+        <h4>Redes e Portfólio</h4>
+        <div class="social-links">
+          <a href="#" target="_blank">LinkedIn</a>
+          <a href="#" target="_blank">GitHub</a>
+          <a href="#" target="_blank">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 3rem; color: #475569; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem;">
+      &copy; 2026 Charles Aranna - Todos os direitos reservados.
+    </div>
+  </footer>
 
   <!-- Janela Dinâmica Modal -->
   <div class="modal-overlay" id="quoteModal">
     <div class="modal-window">
       <button class="close-modal" onclick="closeModal()">&times;</button>
-      <h3 style="color: #FFF; font-size: 1.5rem; margin-bottom: 0.5rem;">Solicitação de Orçamento</h3>
-      <p style="color: #94A3B8; font-size: 0.9rem;">Preencha os dados abaixo para receber a proposta personalizada.</p>
+      <h3 style="font-family: 'Orbitron', sans-serif; color: #FFF; font-size: 1.5rem; margin-bottom: 0.5rem; text-transform: uppercase;">Solicitação de Orçamento</h3>
+      <p style="color: #94A3B8; font-size: 0.9rem;">Preencha os dados abaixo para receber a proposta.</p>
       
       <div class="selected-summary">
         <strong style="color: var(--cyan-neon); font-size: 0.8rem; display: block; margin-bottom: 0.5rem;">SERVIÇOS SELECIONADOS:</strong>
