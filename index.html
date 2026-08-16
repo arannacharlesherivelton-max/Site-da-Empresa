@@ -320,7 +320,7 @@
       text-transform: uppercase;
     }
 
-    .footer-col p, .footer-col a {
+    .footer-col p, .footer-col a, .footer-col span {
       color: #94A3B8;
       font-size: 0.95rem;
       text-decoration: none;
@@ -338,6 +338,7 @@
       display: flex;
       gap: 1rem;
       margin-top: 0.5rem;
+      flex-wrap: wrap;
     }
 
     .social-links a {
@@ -492,7 +493,6 @@
     <p style="color: #94A3B8; text-align: center; margin-top: 0.5rem;">Selecione os módulos para personalizar sua infraestrutura</p>
     
     <div class="services-grid">
-      <!-- Serviços Antigos -->
       <div class="service-card" onclick="toggleService(this, 'Cibersegurança Zero Trust')">
         <h3 class="card-title">Cibersegurança Zero Trust</h3>
         <p class="card-desc">Proteção contínua contra invasões, monitoramento SOC e mitigação de ameaças em tempo real.</p>
@@ -513,7 +513,6 @@
         <p class="card-desc">Desenvolvimento web e mobile sob medida com princípios avançados de Security by Design.</p>
       </div>
 
-      <!-- NOVOS SERVIÇOS ADICIONADOS -->
       <div class="service-card" onclick="toggleService(this, 'Redes de Computadores')">
         <h3 class="card-title">Redes de Computadores</h3>
         <p class="card-desc">Projeto e implementação de topologias de rede, roteamento avançado e segurança de perímetro.</p>
@@ -545,15 +544,17 @@
       </div>
       <div class="footer-col">
         <h4>Contato Direto</h4>
-        <a href="mailto:contato@charlesaranna.com">📧 contato@charlesaranna.com</a>
-        <a href="tel:+5500000000000">📞 (00) 00000-0000</a>
+        <a href="mailto:arannacharlesherivelton@gmail.com">📧 arannacharlesherivelton@gmail.com</a>
+        <span>📱 WhatsApp: @aranna_charles.h</span>
       </div>
       <div class="footer-col">
         <h4>Redes e Portfólio</h4>
         <div class="social-links">
+          <a href="https://www.facebook.com/profile.php?id=61591691731313" target="_blank">Facebook</a>
+          <a href="https://www.instagram.com/cybertechonology_group/" target="_blank">Instagram</a>
+          <!-- Mantive os botões abaixo caso queira adicionar LinkedIn e GitHub futuramente -->
           <a href="#" target="_blank">LinkedIn</a>
           <a href="#" target="_blank">GitHub</a>
-          <a href="#" target="_blank">Instagram</a>
         </div>
       </div>
     </div>
