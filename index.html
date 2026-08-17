@@ -1,5 +1,4 @@
-
-      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -185,29 +184,45 @@
       transform: translateY(-2px);
     }
 
-    /* === SEÇÕES PRINCIPAIS === */
-    .hero-section {
-      min-height: 100vh;
-      padding: 9rem 3rem 4rem 3rem;
-      max-width: 1440px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    /* === SEÇÕES PRINCIPAIS (HERO MODERNIZADO) === */
+    .hero {
+      position: relative;
+      min-height: 100dvh; 
+      display: flex;
       align-items: center;
-      gap: 4rem;
+      justify-content: center;
+      overflow: hidden;
+      padding: 9rem 3rem 4rem 3rem; 
     }
 
-    .hero-content h1 {
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
+      gap: clamp(2rem, 5vw, 4rem); 
+      align-items: center;
+      width: 100%;
+      max-width: 1440px; 
+    }
+
+    .hero h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 3.2rem;
+      font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
       font-weight: 900;
-      color: #FFF;
       line-height: 1.1;
-      margin-bottom: 1.5rem;
+      margin-bottom: clamp(1rem, 2vw, 1.5rem);
       text-transform: uppercase;
+      background: linear-gradient(to right, #FFFFFF, var(--cyan-neon));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .hero-content p {
+    .hero h1 span {
+      display: block;
+      text-shadow: 0 0 20px rgba(0, 240, 255, 0.3); 
+    }
+
+    .hero p {
       font-size: 1.1rem;
       color: #94A3B8;
       line-height: 1.7;
@@ -310,6 +325,31 @@
       font-weight: 800;
       padding: 4px 8px;
       border-radius: 4px;
+      letter-spacing: 1px;
+    }
+
+    /* Estilos para os Projetos (Área Restrita) */
+    .project-card {
+      background: rgba(0, 255, 102, 0.05);
+      border: 1px solid rgba(0, 255, 102, 0.3);
+      border-radius: 8px;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .project-card:hover {
+      border-color: var(--green-neon);
+      box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+    }
+
+    .project-card::before {
+      content: '⚡ STATUS: ATIVO';
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 0.6rem;
+      font-weight: 800;
+      color: var(--green-neon);
       letter-spacing: 1px;
     }
 
@@ -431,15 +471,18 @@
       font-weight: 700;
       font-size: 1rem;
       background: rgba(0, 240, 255, 0.1);
-      padding: 5px 15px;
+      padding: 8px 20px; /* Aumentei o botão das redes sociais */
       border: 1px solid var(--border-color);
       border-radius: 4px;
       color: var(--cyan-neon);
+      text-decoration: none;
+      transition: all 0.3s ease;
     }
 
     .social-links a:hover {
       background: var(--cyan-neon);
       color: #000;
+      box-shadow: 0 0 15px var(--cyan-glow);
     }
 
     /* === MODAIS (ORÇAMENTO E LOGIN) === */
@@ -544,7 +587,7 @@
     }
 
     @media (max-width: 968px) {
-      .hero-section { grid-template-columns: 1fr; text-align: center; }
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
       .header-container { flex-wrap: wrap; gap: 1rem; justify-content: center; padding: 1rem; }
       .nav-menu { flex-wrap: wrap; justify-content: center; gap: 1rem; }
     }
@@ -584,14 +627,16 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-content">
-      <h1>Segurança & Tecnologia de Elite</h1>
-      <p>Ecossistemas cibernéticos avançados, proteção em tempo real e inteligência estratégica para sua infraestrutura corporativa.</p>
-      <button class="btn-budget" onclick="openModal()">Montar Projeto</button>
-    </div>
-    <div class="hero-image-container">
-      <img src="1001086739.png" alt="Charles Aranna Cyber Tech" class="hero-img">
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <h1><span>Segurança &</span> Tecnologia de Elite</h1>
+        <p>Ecossistemas cibernéticos avançados, proteção em tempo real e inteligência estratégica para sua infraestrutura corporativa.</p>
+        <button class="btn-budget" onclick="openModal()">Montar Projeto</button>
+      </div>
+      <div class="hero-image-container">
+        <img src="1001086739.png" alt="Charles Aranna Cyber Tech" class="hero-img">
+      </div>
     </div>
   </section>
 
@@ -601,7 +646,6 @@
     <p style="color: #94A3B8; text-align: center; margin-top: 0.5rem;">Selecione os módulos para personalizar sua infraestrutura</p>
     
     <div class="services-grid">
-      
       <!-- SERVIÇO BLOQUEADO -->
       <div class="service-card locked" onclick="alertLocked()">
         <span class="lock-badge">🔒 EM BREVE</span>
@@ -609,7 +653,6 @@
         <p class="card-desc">Proteção contínua contra invasões, monitoramento SOC e mitigação de ameaças em tempo real.</p>
       </div>
 
-      <!-- Serviço Disponível -->
       <div class="service-card" onclick="toggleService(this, 'Inteligência Artificial & RPA')">
         <h3 class="card-title">Inteligência Artificial & RPA</h3>
         <p class="card-desc">Automação de processos operacionais e integração de algoritmos preditivos estratégicos.</p>
@@ -629,19 +672,16 @@
         <p class="card-desc">Desenvolvimento web e mobile sob medida com princípios avançados de Security by Design.</p>
       </div>
 
-      <!-- Serviço Disponível -->
       <div class="service-card" onclick="toggleService(this, 'Redes de Computadores')">
         <h3 class="card-title">Redes de Computadores</h3>
         <p class="card-desc">Projeto e implementação de topologias de rede, roteamento avançado e segurança de perímetro.</p>
       </div>
 
-      <!-- Serviço Disponível -->
       <div class="service-card" onclick="toggleService(this, 'Cabeamento Estruturado')">
         <h3 class="card-title">Cabeamento Estruturado</h3>
         <p class="card-desc">Organização de racks, infraestrutura física de alta performance e certificação de rede.</p>
       </div>
 
-      <!-- Serviço Disponível -->
       <div class="service-card" onclick="toggleService(this, 'Fibra Óptica (FTTH)')">
         <h3 class="card-title">Fibra Óptica & FTTH</h3>
         <p class="card-desc">Planejamento de redes ópticas de alta velocidade e implantação de configurações em OLT/ONT.</p>
@@ -656,46 +696,20 @@
     </div>
   </section>
 
-  <!-- Seção de Avaliações -->
-  <section id="avaliacoes" class="testimonials-section">
-    <h2 style="font-family: 'Orbitron', sans-serif; color: #FFF; text-align: center; font-size: 2rem; text-transform: uppercase;">Aprovação de Nossos Parceiros</h2>
-    <p style="color: #94A3B8; text-align: center; margin-top: 0.5rem;">O que dizem as empresas que já elevaram sua infraestrutura</p>
+  <!-- SEÇÃO SECRETA: PROJETOS ADMIN (Inicia Oculta) -->
+  <section id="painel-projetos" class="interactive-services" style="display: none; border-top: 1px solid var(--green-neon); background: rgba(0, 255, 102, 0.02);">
+    <h2 style="font-family: 'Orbitron', sans-serif; color: var(--green-neon); text-align: center; font-size: 2rem; text-transform: uppercase;">Repositório Confidencial</h2>
+    <p style="color: #94A3B8; text-align: center; margin-top: 0.5rem;">Acesso Nível Admin concedido. Bem-vindo ao hub de projetos.</p>
     
-    <div class="testimonials-grid">
-      <!-- Avaliação 1 -->
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"A implantação da nossa rede de fibra óptica e a configuração minuciosa dos equipamentos OLT mudaram o patamar de estabilidade da nossa empresa. Excelente trabalho técnico."</p>
-        <span class="testimonial-author">Roberto S.</span>
-        <span class="testimonial-role">Diretor de Infraestrutura</span>
+    <div class="services-grid">
+      <div class="project-card">
+        <h3 class="card-title">Cyber Hydra IA</h3>
+        <p class="card-desc">Módulo avançado de inteligência artificial multi-camadas para predição de anomalias na rede.</p>
       </div>
 
-      <!-- Avaliação 2 -->
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"Profissionalismo ímpar no cabeamento estruturado e mapeamento da rede de computadores. Tudo padronizado, testado e com alto desempenho."</p>
-        <span class="testimonial-author">Amanda M.</span>
-        <span class="testimonial-role">Gerente de Operações</span>
+      <div class="project-card">
+        <h3 class="card-title">Cyber Ghosth Hydra</h3>
+        <p class="card-desc">Protocolo de invisibilidade e ofuscação de dados para tráfego em infraestruturas críticas.</p>
       </div>
 
-      <!-- Avaliação 3 -->
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"Implementamos algoritmos de automação que pouparam horas da nossa equipe operacional. A visão estratégica do Cyber Tech Group é fenomenal."</p>
-        <span class="testimonial-author">Diego F.</span>
-        <span class="testimonial-role">CEO, TechLogistics</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Rodapé (Contato e Redes Sociais) -->
-  <footer id="contato" class="cyber-footer">
-    <div class="footer-content">
-      <div class="footer-col">
-        <h4>Cyber Tech Group</h4>
-        <p>Soluções tecnológicas avançadas<br>para o futuro da sua empresa.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Contato Direto</h4>
-        <a href="mailto:arannacharlesherivelton@gmail.com">📧 arannacharlesherivelton@gmail.com</a>
- 
+      <div class
