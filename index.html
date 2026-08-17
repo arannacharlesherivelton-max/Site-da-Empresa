@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+      <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -19,6 +20,7 @@
       --header-bg: rgba(8, 14, 24, 0.9);
       --cyan-neon: #00F0FF;
       --cyan-glow: rgba(0, 240, 255, 0.4);
+      --green-neon: #00FF66; /* Cor extra para área restrita */
       --chrome-text: #E2E8F0;
       --border-color: rgba(0, 240, 255, 0.25);
     }
@@ -114,6 +116,11 @@
 
     .nav-link:hover {
       color: var(--cyan-neon);
+    }
+
+    .nav-link.restricted {
+      color: var(--green-neon);
+      text-shadow: 0 0 5px rgba(0, 255, 102, 0.5);
     }
 
     /* Menu Dropdown */
@@ -238,7 +245,6 @@
       padding: 5rem 3rem;
       max-width: 1440px;
       margin: 0 auto;
-      flex: 1;
     }
 
     .services-grid {
@@ -281,6 +287,32 @@
       letter-spacing: 1px;
     }
 
+    /* Estilos para Serviços Bloqueados */
+    .service-card.locked {
+      opacity: 0.5;
+      cursor: not-allowed;
+      border-color: #334155;
+      background: rgba(10, 18, 30, 0.3);
+    }
+
+    .service-card.locked:hover {
+      transform: none;
+      border-color: #334155;
+    }
+
+    .lock-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #334155;
+      color: #94A3B8;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 4px 8px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+    }
+
     .card-title {
       font-family: 'Orbitron', sans-serif;
       font-size: 1.1rem;
@@ -294,12 +326,65 @@
       line-height: 1.5;
     }
 
+    /* === AVALIAÇÕES (DEPOIMENTOS) === */
+    .testimonials-section {
+      padding: 5rem 3rem;
+      background: linear-gradient(180deg, #040810 0%, #080E18 100%);
+      border-top: 1px dashed rgba(255, 255, 255, 0.05);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1440px;
+      margin: 3rem auto 0;
+    }
+
+    .testimonial-card {
+      background: rgba(4, 8, 16, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .stars {
+      color: var(--cyan-neon);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: #CBD5E1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-author {
+      font-family: 'Rajdhani', sans-serif;
+      color: #FFF;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .testimonial-role {
+      color: #64748B;
+      font-size: 0.8rem;
+      display: block;
+    }
+
     /* === RODAPÉ (FOOTER) === */
     .cyber-footer {
       background: #020408;
       border-top: 1px solid var(--border-color);
       padding: 3rem 3rem;
-      margin-top: 4rem;
+      margin-top: auto;
     }
 
     .footer-content {
@@ -357,7 +442,7 @@
       color: #000;
     }
 
-    /* === MODAL === */
+    /* === MODAIS (ORÇAMENTO E LOGIN) === */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -390,6 +475,13 @@
       position: relative;
       transform: scale(0.9);
       transition: transform 0.3s ease;
+    }
+
+    /* Estilo Especial para o Modal de Login */
+    #loginModal .modal-window {
+      border-color: var(--green-neon);
+      box-shadow: 0 0 40px rgba(0, 255, 102, 0.2);
+      max-width: 400px;
     }
 
     .modal-overlay.active .modal-window {
@@ -437,6 +529,20 @@
       box-shadow: 0 0 8px var(--cyan-glow);
     }
 
+    /* Input verde para modal de login */
+    #loginModal .form-group input:focus {
+      border-color: var(--green-neon);
+      box-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
+    }
+
+    .btn-login {
+      background: var(--green-neon);
+      box-shadow: 0 0 15px var(--green-neon);
+    }
+    .btn-login:hover {
+      box-shadow: 0 0 25px var(--green-neon);
+    }
+
     @media (max-width: 968px) {
       .hero-section { grid-template-columns: 1fr; text-align: center; }
       .header-container { flex-wrap: wrap; gap: 1rem; justify-content: center; padding: 1rem; }
@@ -468,7 +574,9 @@
             <a href="#servicos">Desenvolvimento & UX</a>
           </div>
         </div>
-        <a href="#contato" class="nav-link">Contato</a>
+        <a href="#avaliacoes" class="nav-link">Avaliações</a>
+        <!-- Botão para Área Restrita -->
+        <a href="#" onclick="openLoginModal()" class="nav-link restricted">Projetos 🔒</a>
       </nav>
 
       <button class="btn-budget" onclick="openModal()">Orçamento</button>
@@ -493,44 +601,89 @@
     <p style="color: #94A3B8; text-align: center; margin-top: 0.5rem;">Selecione os módulos para personalizar sua infraestrutura</p>
     
     <div class="services-grid">
-      <div class="service-card" onclick="toggleService(this, 'Cibersegurança Zero Trust')">
+      
+      <!-- SERVIÇO BLOQUEADO -->
+      <div class="service-card locked" onclick="alertLocked()">
+        <span class="lock-badge">🔒 EM BREVE</span>
         <h3 class="card-title">Cibersegurança Zero Trust</h3>
         <p class="card-desc">Proteção contínua contra invasões, monitoramento SOC e mitigação de ameaças em tempo real.</p>
       </div>
 
+      <!-- Serviço Disponível -->
       <div class="service-card" onclick="toggleService(this, 'Inteligência Artificial & RPA')">
         <h3 class="card-title">Inteligência Artificial & RPA</h3>
         <p class="card-desc">Automação de processos operacionais e integração de algoritmos preditivos estratégicos.</p>
       </div>
 
-      <div class="service-card" onclick="toggleService(this, 'Nuvem Híbrida & Resiliência')">
+      <!-- SERVIÇO BLOQUEADO -->
+      <div class="service-card locked" onclick="alertLocked()">
+        <span class="lock-badge">🔒 EM BREVE</span>
         <h3 class="card-title">Nuvem Híbrida & Resiliência</h3>
         <p class="card-desc">Migração segura para infraestrutura de alta disponibilidade e planos de recuperação rápida.</p>
       </div>
 
-      <div class="service-card" onclick="toggleService(this, 'Engenharia Nativa (SecByDesign)')">
+      <!-- SERVIÇO BLOQUEADO -->
+      <div class="service-card locked" onclick="alertLocked()">
+        <span class="lock-badge">🔒 EM BREVE</span>
         <h3 class="card-title">Engenharia Nativa</h3>
         <p class="card-desc">Desenvolvimento web e mobile sob medida com princípios avançados de Security by Design.</p>
       </div>
 
+      <!-- Serviço Disponível -->
       <div class="service-card" onclick="toggleService(this, 'Redes de Computadores')">
         <h3 class="card-title">Redes de Computadores</h3>
         <p class="card-desc">Projeto e implementação de topologias de rede, roteamento avançado e segurança de perímetro.</p>
       </div>
 
+      <!-- Serviço Disponível -->
       <div class="service-card" onclick="toggleService(this, 'Cabeamento Estruturado')">
         <h3 class="card-title">Cabeamento Estruturado</h3>
         <p class="card-desc">Organização de racks, infraestrutura física de alta performance e certificação de rede.</p>
       </div>
 
+      <!-- Serviço Disponível -->
       <div class="service-card" onclick="toggleService(this, 'Fibra Óptica (FTTH)')">
         <h3 class="card-title">Fibra Óptica & FTTH</h3>
         <p class="card-desc">Planejamento de redes ópticas de alta velocidade e implantação de configurações em OLT/ONT.</p>
       </div>
 
-      <div class="service-card" onclick="toggleService(this, 'UX/UI Designer')">
+      <!-- SERVIÇO BLOQUEADO -->
+      <div class="service-card locked" onclick="alertLocked()">
+        <span class="lock-badge">🔒 EM BREVE</span>
         <h3 class="card-title">UX/UI Designer</h3>
         <p class="card-desc">Mapeamento de jornada e criação de interfaces modernas, intuitivas e focadas na experiência do usuário.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Avaliações -->
+  <section id="avaliacoes" class="testimonials-section">
+    <h2 style="font-family: 'Orbitron', sans-serif; color: #FFF; text-align: center; font-size: 2rem; text-transform: uppercase;">Aprovação de Nossos Parceiros</h2>
+    <p style="color: #94A3B8; text-align: center; margin-top: 0.5rem;">O que dizem as empresas que já elevaram sua infraestrutura</p>
+    
+    <div class="testimonials-grid">
+      <!-- Avaliação 1 -->
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"A implantação da nossa rede de fibra óptica e a configuração minuciosa dos equipamentos OLT mudaram o patamar de estabilidade da nossa empresa. Excelente trabalho técnico."</p>
+        <span class="testimonial-author">Roberto S.</span>
+        <span class="testimonial-role">Diretor de Infraestrutura</span>
+      </div>
+
+      <!-- Avaliação 2 -->
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Profissionalismo ímpar no cabeamento estruturado e mapeamento da rede de computadores. Tudo padronizado, testado e com alto desempenho."</p>
+        <span class="testimonial-author">Amanda M.</span>
+        <span class="testimonial-role">Gerente de Operações</span>
+      </div>
+
+      <!-- Avaliação 3 -->
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Implementamos algoritmos de automação que pouparam horas da nossa equipe operacional. A visão estratégica do Cyber Tech Group é fenomenal."</p>
+        <span class="testimonial-author">Diego F.</span>
+        <span class="testimonial-role">CEO, TechLogistics</span>
       </div>
     </div>
   </section>
@@ -541,101 +694,8 @@
       <div class="footer-col">
         <h4>Cyber Tech Group</h4>
         <p>Soluções tecnológicas avançadas<br>para o futuro da sua empresa.</p>
-            <div class="footer-col">
+      </div>
+      <div class="footer-col">
         <h4>Contato Direto</h4>
         <a href="mailto:arannacharlesherivelton@gmail.com">📧 arannacharlesherivelton@gmail.com</a>
-        
-        <!-- Link do WhatsApp atualizado com o número -->
-        <a href="https://wa.me/5542991479486" target="_blank">📱 WhatsApp: @aranna_charles.h</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Redes e Portfólio</h4>
-        <div class="social-links">
-          <a href="https://www.facebook.com/profile.php?id=61591691731313" target="_blank">Facebook</a>
-          <a href="https://www.instagram.com/cybertechonology_group/" target="_blank">Instagram</a>
-          <!-- Mantive os botões abaixo caso queira adicionar LinkedIn e GitHub futuramente -->
-          <a href="#" target="_blank">LinkedIn</a>
-          <a href="#" target="_blank">GitHub</a>
-        </div>
-      </div>
-    </div>
-    <div style="text-align: center; margin-top: 3rem; color: #475569; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem;">
-      &copy; 2026 Charles Aranna - Todos os direitos reservados.
-    </div>
-  </footer>
-
-  <!-- Janela Dinâmica Modal -->
-  <div class="modal-overlay" id="quoteModal">
-    <div class="modal-window">
-      <button class="close-modal" onclick="closeModal()">&times;</button>
-      <h3 style="font-family: 'Orbitron', sans-serif; color: #FFF; font-size: 1.5rem; margin-bottom: 0.5rem; text-transform: uppercase;">Solicitação de Orçamento</h3>
-      <p style="color: #94A3B8; font-size: 0.9rem;">Preencha os dados abaixo para receber a proposta.</p>
-      
-      <div class="selected-summary">
-        <strong style="color: var(--cyan-neon); font-size: 0.8rem; display: block; margin-bottom: 0.5rem;">SERVIÇOS SELECIONADOS:</strong>
-        <ul id="selectedList" style="color: #FFF; padding-left: 1.2rem; font-size: 0.85rem;">
-          <li style="color: #707B8C;">Nenhum serviço selecionado no painel.</li>
-        </ul>
-      </div>
-
-      <form onsubmit="handleSubmit(event)">
-        <div class="form-group">
-          <input type="text" placeholder="Seu Nome ou Empresa" required>
-        </div>
-        <div class="form-group">
-          <input type="email" placeholder="E-mail Corporativo" required>
-        </div>
-        <div class="form-group">
-          <textarea rows="3" placeholder="Detalhes adicionais do projeto..."></textarea>
-        </div>
-        <button type="submit" class="btn-budget" style="width: 100%;">Enviar Solicitação</button>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    const selectedServices = new Set();
-
-    function toggleService(card, serviceName) {
-      card.classList.toggle('selected');
-      if (selectedServices.has(serviceName)) {
-        selectedServices.delete(serviceName);
-      } else {
-        selectedServices.add(serviceName);
-      }
-      updateModalSummary();
-    }
-
-    function updateModalSummary() {
-      const listElement = document.getElementById('selectedList');
-      listElement.innerHTML = '';
-      
-      if (selectedServices.size === 0) {
-        listElement.innerHTML = '<li style="color: #707B8C;">Nenhum serviço selecionado no painel.</li>';
-        return;
-      }
-
-      selectedServices.forEach(service => {
-        const li = document.createElement('li');
-        li.textContent = service;
-        listElement.appendChild(li);
-      });
-    }
-
-    function openModal() {
-      document.getElementById('quoteModal').classList.add('active');
-    }
-
-    function closeModal() {
-      document.getElementById('quoteModal').classList.remove('active');
-    }
-
-    function handleSubmit(e) {
-      e.preventDefault();
-      alert('Solicitação enviada com sucesso! Nossa equipe entrará em contato.');
-      closeModal();
-    }
-  </script>
-</body>
-</html>
+ 
