@@ -100,7 +100,24 @@
       gap: 2rem;
       align-items: center;
     }
-
+<!-- Navegação com Submenu -->
+      <nav class="nav-menu">
+        <a href="#" class="nav-link">Home</a>
+        <div class="dropdown">
+          <a href="#servicos" class="nav-link">Soluções ▾</a>
+          <div class="dropdown-content">
+            <a href="#servicos">Infraestrutura & Redes</a>
+            <a href="#servicos">Fibra Óptica</a>
+            <a href="#servicos">Cibersegurança</a>
+            <a href="#servicos">Desenvolvimento & UX</a>
+          </div>
+        </div>
+        <a href="#portifolio" class="nav-link">Portfólio</a> <!-- LINK NOVO AQUI -->
+        <a href="#avaliacoes" class="nav-link">Avaliações</a>
+        <!-- Botão para Área Restrita -->
+        <a href="#" onclick="openLoginModal()" class="nav-link restricted">Projetos 🔒</a>
+      </nav>
+    
     .nav-link {
       color: #FFF;
       text-decoration: none;
@@ -736,6 +753,70 @@
         <h3 class="card-title">Projeto Cyber Guardian</h3>
         <p class="card-desc">Firewall cognitivo de próxima geração com regras dinâmicas ajustadas por Machine Learning.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Seção de Portfólio / Trabalhos Realizados -->
+  <section id="portifolio" class="portfolio-section">
+    <h2 style="font-family: 'Orbitron', sans-serif; color: #FFF; text-align: center; font-size: 2rem; text-transform: uppercase;">Portfólio de Projetos</h2>
+    <p style="color: #94A3B8; text-align: center; margin-top: 0.5rem;">Confira a excelência das nossas implantações e desenvolvimento</p>
+    
+    <div class="portfolio-grid">
+      
+      <!-- Item 1: Redes e Cabeamento -->
+      <div class="portfolio-item">
+        <img src="1001074591.png" alt="Instalação de Redes" class="portfolio-img">
+        <div class="portfolio-info">
+          <h3 class="portfolio-title">Cabeamento Estruturado</h3>
+          <p class="portfolio-desc">Organização de racks e infraestrutura física de alta performance para ambientes corporativos (Cat5e, Cat6).</p>
+        </div>
+      </div>
+
+      <!-- Item 2: Fibra Óptica -->
+      <div class="portfolio-item">
+        <img src="1001074604.png" alt="Infraestrutura em Fibra Óptica" class="portfolio-img">
+        <div class="portfolio-info">
+          <h3 class="portfolio-title">Redes de Fibra Óptica</h3>
+          <p class="portfolio-desc">Serviços de infraestrutura, fusão (splicing) e transmissão de dados em ultra velocidade com baixa latência.</p>
+        </div>
+      </div>
+
+      <!-- Item 3: Câmeras Wi-Fi -->
+      <div class="portfolio-item">
+        <img src="1001074590.png" alt="Câmeras de Segurança" class="portfolio-img">
+        <div class="portfolio-info">
+          <h3 class="portfolio-title">Monitoramento Wi-Fi</h3>
+          <p class="portfolio-desc">Instalação de sistemas de vigilância de alta definição com acesso remoto em tempo real via smartphone.</p>
+        </div>
+      </div>
+
+      <!-- Item 4: Roteadores Mesh -->
+      <div class="portfolio-item">
+        <img src="1001074592.png" alt="Roteadores Mesh" class="portfolio-img">
+        <div class="portfolio-info">
+          <h3 class="portfolio-title">Redes Mesh (Sem Pontos Cegos)</h3>
+          <p class="portfolio-desc">Expansão de cobertura Wi-Fi inteligente para sobrados e edículas, garantindo máxima estabilidade de conexão.</p>
+        </div>
+      </div>
+
+      <!-- Item 5: Cybersecurity -->
+      <div class="portfolio-item">
+        <img src="1001074597.png" alt="Cybersecurity" class="portfolio-img">
+        <div class="portfolio-info">
+          <h3 class="portfolio-title">Cybersecurity Empresarial</h3>
+          <p class="portfolio-desc">Proteção avançada de dados, encriptação, conformidade com a LGPD e defesa ativa contra ataques maliciosos.</p>
+        </div>
+      </div>
+
+      <!-- Item 6: Inteligência Artificial -->
+      <div class="portfolio-item">
+        <img src="1001074596.png" alt="IA e Machine Learning" class="portfolio-img">
+        <div class="portfolio-info">
+          <h3 class="portfolio-title">IA & Machine Learning</h3>
+          <p class="portfolio-desc">Implementação de algoritmos cognitivos, visão computacional e análise de Big Data para o seu negócio.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
