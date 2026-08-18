@@ -1,13 +1,20 @@
 .hero {
   position: relative;
-  /* 'dvh' (dynamic viewport height) é o padrão moderno. 
-     Ele evita que a barra de endereços do celular corte o seu conteúdo, o que acontecia muito com o '100vh'. */
+  /* 'dvh' (dynamic viewport height) é o padrão moderno. */
   min-height: 100dvh; 
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  
+  /* ❌ O PROBLEMA ESTAVA AQUI: overflow: hidden; cortava janelas e menus que passavam do limite. */
+  /* ✅ SOLUÇÃO: Remover ou comentar o overflow. */
+  /* overflow: hidden; */ 
+
   padding: 2rem; /* Respiro de segurança para celulares */
+  
+  /* ✅ ADIÇÃO RECOMENDADA: Cria um contexto de empilhamento baixo. 
+     Isso garante que suas janelas (modais) com z-index maior (ex: 10, 100) fiquem por cima dele. */
+  z-index: 1; 
 }
 
 .hero-grid {
@@ -22,7 +29,7 @@
 }
 
 .hero h1 {
-  /* Tipografia Fluida (Clamp): O tamanho varia de 2.5rem (celular) até 4.5rem (telas grandes) de forma suave */
+  /* Tipografia Fluida (Clamp) */
   font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
   line-height: 1.1;
   margin-bottom: clamp(1rem, 2vw, 1.5rem);
