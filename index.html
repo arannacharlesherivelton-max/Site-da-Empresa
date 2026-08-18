@@ -19,7 +19,7 @@
       --header-bg: rgba(8, 14, 24, 0.9);
       --cyan-neon: #00F0FF;
       --cyan-glow: rgba(0, 240, 255, 0.4);
-      --green-neon: #00FF66; /* Cor extra para área restrita */
+      --green-neon: #00FF66;
       --chrome-text: #E2E8F0;
       --border-color: rgba(0, 240, 255, 0.25);
     }
@@ -40,7 +40,7 @@
       min-height: 100vh;
     }
 
-    /* === CABEÇALHO E NAVEGAÇÃO === */
+    /* === CABEÇALHO === */
     .cyber-header {
       position: fixed;
       top: 0;
@@ -94,30 +94,12 @@
       text-transform: uppercase;
     }
 
-    /* Navegação e Submenus */
     .nav-menu {
       display: flex;
       gap: 2rem;
       align-items: center;
     }
-<!-- Navegação com Submenu -->
-      <nav class="nav-menu">
-        <a href="#" class="nav-link">Home</a>
-        <div class="dropdown">
-          <a href="#servicos" class="nav-link">Soluções ▾</a>
-          <div class="dropdown-content">
-            <a href="#servicos">Infraestrutura & Redes</a>
-            <a href="#servicos">Fibra Óptica</a>
-            <a href="#servicos">Cibersegurança</a>
-            <a href="#servicos">Desenvolvimento & UX</a>
-          </div>
-        </div>
-        <a href="#portifolio" class="nav-link">Portfólio</a> <!-- LINK NOVO AQUI -->
-        <a href="#avaliacoes" class="nav-link">Avaliações</a>
-        <!-- Botão para Área Restrita -->
-        <a href="#" onclick="openLoginModal()" class="nav-link restricted">Projetos 🔒</a>
-      </nav>
-    
+
     .nav-link {
       color: #FFF;
       text-decoration: none;
@@ -130,16 +112,13 @@
       position: relative;
     }
 
-    .nav-link:hover {
-      color: var(--cyan-neon);
-    }
+    .nav-link:hover { color: var(--cyan-neon); }
 
     .nav-link.restricted {
       color: var(--green-neon);
       text-shadow: 0 0 5px rgba(0, 255, 102, 0.5);
     }
 
-    /* Menu Dropdown */
     .dropdown {
       position: relative;
       display: inline-block;
@@ -159,9 +138,7 @@
       padding: 0.5rem 0;
     }
 
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
+    .dropdown:hover .dropdown-content { display: block; }
 
     .dropdown-content a {
       color: #A0AEC0;
@@ -201,7 +178,7 @@
       transform: translateY(-2px);
     }
 
-    /* === SEÇÕES PRINCIPAIS (HERO MODERNIZADO) === */
+    /* === HERO === */
     .hero {
       position: relative;
       min-height: 100dvh; 
@@ -272,7 +249,7 @@
       100% { box-shadow: 0 0 45px rgba(0, 240, 255, 0.7); }
     }
 
-    /* === SERVIÇOS === */
+    /* === SERVIÇOS & PROJETOS === */
     .interactive-services {
       padding: 5rem 3rem;
       max-width: 1440px;
@@ -302,12 +279,12 @@
       transform: translateY(-5px);
     }
 
+    /* Estado de Selecionado Padrão (Ciano) */
     .service-card.selected {
       background: rgba(0, 240, 255, 0.1);
       border: 2px solid var(--cyan-neon);
       box-shadow: 0 0 20px var(--cyan-glow);
     }
-
     .service-card.selected::after {
       content: '✓ SELECIONADO';
       position: absolute;
@@ -319,14 +296,31 @@
       letter-spacing: 1px;
     }
 
-    /* Estilos para Serviços Bloqueados */
+    /* Estado de Selecionado para Projetos (Verde) */
+    .project-card.selected {
+      background: rgba(0, 255, 102, 0.1);
+      border: 2px solid var(--green-neon);
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
+    }
+    .project-card.selected::after {
+      content: '✓ SELECIONADO';
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--green-neon);
+      letter-spacing: 1px;
+      z-index: 10;
+    }
+
+    /* Serviços Bloqueados */
     .service-card.locked {
       opacity: 0.5;
       cursor: not-allowed;
       border-color: #334155;
       background: rgba(10, 18, 30, 0.3);
     }
-
     .service-card.locked:hover {
       transform: none;
       border-color: #334155;
@@ -345,29 +339,13 @@
       letter-spacing: 1px;
     }
 
-    /* Estilos para os Projetos (Área Restrita) */
     .project-card {
       background: rgba(0, 255, 102, 0.05);
       border: 1px solid rgba(0, 255, 102, 0.3);
-      border-radius: 8px;
-      padding: 2rem;
-      position: relative;
     }
-    
     .project-card:hover {
       border-color: var(--green-neon);
       box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
-    }
-
-    .project-card::before {
-      content: '⚡ STATUS: ATIVO';
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      font-size: 0.6rem;
-      font-weight: 800;
-      color: var(--green-neon);
-      letter-spacing: 1px;
     }
 
     .card-title {
@@ -383,7 +361,7 @@
       line-height: 1.5;
     }
 
-    /* === AVALIAÇÕES (DEPOIMENTOS) === */
+    /* === AVALIAÇÕES === */
     .testimonials-section {
       padding: 5rem 3rem;
       background: linear-gradient(180deg, #040810 0%, #080E18 100%);
@@ -436,7 +414,7 @@
       display: block;
     }
 
-    /* === RODAPÉ (FOOTER) === */
+    /* === RODAPÉ === */
     .cyber-footer {
       background: #020408;
       border-top: 1px solid var(--border-color);
@@ -488,7 +466,7 @@
       font-weight: 700;
       font-size: 1rem;
       background: rgba(0, 240, 255, 0.1);
-      padding: 8px 20px; /* Aumentei o botão das redes sociais */
+      padding: 8px 20px;
       border: 1px solid var(--border-color);
       border-radius: 4px;
       color: var(--cyan-neon);
@@ -502,7 +480,7 @@
       box-shadow: 0 0 15px var(--cyan-glow);
     }
 
-    /* === MODAIS (ORÇAMENTO E LOGIN) === */
+    /* === MODAIS === */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -519,10 +497,7 @@
       transition: opacity 0.3s ease;
     }
 
-    .modal-overlay.active {
-      display: flex;
-      opacity: 1;
-    }
+    .modal-overlay.active { display: flex; opacity: 1; }
 
     .modal-window {
       background: #080E18;
@@ -537,16 +512,13 @@
       transition: transform 0.3s ease;
     }
 
-    /* Estilo Especial para o Modal de Login */
     #loginModal .modal-window {
       border-color: var(--green-neon);
       box-shadow: 0 0 40px rgba(0, 255, 102, 0.2);
       max-width: 400px;
     }
 
-    .modal-overlay.active .modal-window {
-      transform: scale(1);
-    }
+    .modal-overlay.active .modal-window { transform: scale(1); }
 
     .close-modal {
       position: absolute;
@@ -569,9 +541,7 @@
       overflow-y: auto;
     }
 
-    .form-group {
-      margin-bottom: 1rem;
-    }
+    .form-group { margin-bottom: 1rem; }
 
     .form-group input, .form-group textarea {
       width: 100%;
@@ -589,7 +559,6 @@
       box-shadow: 0 0 8px var(--cyan-glow);
     }
 
-    /* Input verde para modal de login */
     #loginModal .form-group input:focus {
       border-color: var(--green-neon);
       box-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
@@ -599,9 +568,7 @@
       background: var(--green-neon);
       box-shadow: 0 0 15px var(--green-neon);
     }
-    .btn-login:hover {
-      box-shadow: 0 0 25px var(--green-neon);
-    }
+    .btn-login:hover { box-shadow: 0 0 25px var(--green-neon); }
 
     @media (max-width: 968px) {
       .hero-grid { grid-template-columns: 1fr; text-align: center; }
@@ -657,13 +624,12 @@
     </div>
   </section>
 
-  <!-- Janela de Escolha Interativa -->
+  <!-- Janela de Escolha Interativa (Serviços Públicos) -->
   <section id="servicos" class="interactive-services">
     <h2 style="font-family: 'Orbitron', sans-serif; color: #FFF; text-align: center; font-size: 2rem; text-transform: uppercase;">Catálogo de Serviços</h2>
     <p style="color: #94A3B8; text-align: center; margin-top: 0.5rem;">Selecione os módulos para personalizar sua infraestrutura</p>
     
     <div class="services-grid">
-      <!-- SERVIÇO BLOQUEADO -->
       <div class="service-card locked" onclick="alertLocked()">
         <span class="lock-badge">🔒 EM BREVE</span>
         <h3 class="card-title">Cibersegurança Zero Trust</h3>
@@ -675,14 +641,12 @@
         <p class="card-desc">Automação de processos operacionais e integração de algoritmos preditivos estratégicos.</p>
       </div>
 
-      <!-- SERVIÇO BLOQUEADO -->
       <div class="service-card locked" onclick="alertLocked()">
         <span class="lock-badge">🔒 EM BREVE</span>
         <h3 class="card-title">Nuvem Híbrida & Resiliência</h3>
         <p class="card-desc">Migração segura para infraestrutura de alta disponibilidade e planos de recuperação rápida.</p>
       </div>
 
-      <!-- SERVIÇO BLOQUEADO -->
       <div class="service-card locked" onclick="alertLocked()">
         <span class="lock-badge">🔒 EM BREVE</span>
         <h3 class="card-title">Engenharia Nativa</h3>
@@ -704,7 +668,6 @@
         <p class="card-desc">Planejamento de redes ópticas de alta velocidade e implantação de configurações em OLT/ONT.</p>
       </div>
 
-      <!-- SERVIÇO BLOQUEADO -->
       <div class="service-card locked" onclick="alertLocked()">
         <span class="lock-badge">🔒 EM BREVE</span>
         <h3 class="card-title">UX/UI Designer</h3>
@@ -713,110 +676,47 @@
     </div>
   </section>
 
-  <!-- SEÇÃO SECRETA: PROJETOS ADMIN (Inicia Oculta) -->
+  <!-- SEÇÃO SECRETA: PROJETOS ADMIN (Com caixas de seleção) -->
   <section id="painel-projetos" class="interactive-services" style="display: none; border-top: 1px solid var(--green-neon); background: rgba(0, 255, 102, 0.02);">
     <h2 style="font-family: 'Orbitron', sans-serif; color: var(--green-neon); text-align: center; font-size: 2rem; text-transform: uppercase;">Repositório Confidencial</h2>
-    <p style="color: #94A3B8; text-align: center; margin-top: 0.5rem;">Acesso Nível Admin concedido. Bem-vindo ao hub de projetos.</p>
+    <p style="color: #94A3B8; text-align: center; margin-top: 0.5rem;">Acesso Nível Admin concedido. Selecione os projetos desejados.</p>
     
     <div class="services-grid">
-      <div class="project-card">
+      <!-- Ao clicar, a classe "selected" será adicionada via JS -->
+      <div class="service-card project-card" onclick="this.classList.toggle('selected')">
         <h3 class="card-title">Cyber Hydra IA</h3>
         <p class="card-desc">Módulo avançado de inteligência artificial multi-camadas para predição de anomalias na rede.</p>
       </div>
 
-      <div class="project-card">
+      <div class="service-card project-card" onclick="this.classList.toggle('selected')">
         <h3 class="card-title">Cyber Ghosth Hydra</h3>
         <p class="card-desc">Protocolo de invisibilidade e ofuscação de dados para tráfego em infraestruturas críticas.</p>
       </div>
 
-      <div class="project-card">
+      <div class="service-card project-card" onclick="this.classList.toggle('selected')">
         <h3 class="card-title">Cyber Spider</h3>
         <p class="card-desc">Crawler automatizado para varredura de vulnerabilidades estruturais em aplicações web.</p>
       </div>
 
-      <div class="project-card">
+      <div class="service-card project-card" onclick="this.classList.toggle('selected')">
         <h3 class="card-title">Cyber Kraken</h3>
         <p class="card-desc">Sistema de contenção profunda e resposta a incidentes para mitigação de ataques DDoS.</p>
       </div>
 
-      <div class="project-card">
+      <div class="service-card project-card" onclick="this.classList.toggle('selected')">
         <h3 class="card-title">Cyber Ronin</h3>
         <p class="card-desc">Agente autônomo de cibersegurança focado em auditoria de endpoints descentralizados.</p>
       </div>
 
-      <div class="project-card">
+      <div class="service-card project-card" onclick="this.classList.toggle('selected')">
         <h3 class="card-title">Projeto Legião</h3>
         <p class="card-desc">Arquitetura de nuvem distribuída para processamento de dados criptografados em larga escala.</p>
       </div>
 
-      <div class="project-card">
+      <div class="service-card project-card" onclick="this.classList.toggle('selected')">
         <h3 class="card-title">Projeto Cyber Guardian</h3>
         <p class="card-desc">Firewall cognitivo de próxima geração com regras dinâmicas ajustadas por Machine Learning.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Seção de Portfólio / Trabalhos Realizados -->
-  <section id="portifolio" class="portfolio-section">
-    <h2 style="font-family: 'Orbitron', sans-serif; color: #FFF; text-align: center; font-size: 2rem; text-transform: uppercase;">Portfólio de Projetos</h2>
-    <p style="color: #94A3B8; text-align: center; margin-top: 0.5rem;">Confira a excelência das nossas implantações e desenvolvimento</p>
-    
-    <div class="portfolio-grid">
-      
-      <!-- Item 1: Redes e Cabeamento -->
-      <div class="portfolio-item">
-        <img src="1001074591.png" alt="Instalação de Redes" class="portfolio-img">
-        <div class="portfolio-info">
-          <h3 class="portfolio-title">Cabeamento Estruturado</h3>
-          <p class="portfolio-desc">Organização de racks e infraestrutura física de alta performance para ambientes corporativos (Cat5e, Cat6).</p>
-        </div>
-      </div>
-
-      <!-- Item 2: Fibra Óptica -->
-      <div class="portfolio-item">
-        <img src="1001074604.png" alt="Infraestrutura em Fibra Óptica" class="portfolio-img">
-        <div class="portfolio-info">
-          <h3 class="portfolio-title">Redes de Fibra Óptica</h3>
-          <p class="portfolio-desc">Serviços de infraestrutura, fusão (splicing) e transmissão de dados em ultra velocidade com baixa latência.</p>
-        </div>
-      </div>
-
-      <!-- Item 3: Câmeras Wi-Fi -->
-      <div class="portfolio-item">
-        <img src="1001074590.png" alt="Câmeras de Segurança" class="portfolio-img">
-        <div class="portfolio-info">
-          <h3 class="portfolio-title">Monitoramento Wi-Fi</h3>
-          <p class="portfolio-desc">Instalação de sistemas de vigilância de alta definição com acesso remoto em tempo real via smartphone.</p>
-        </div>
-      </div>
-
-      <!-- Item 4: Roteadores Mesh -->
-      <div class="portfolio-item">
-        <img src="1001074592.png" alt="Roteadores Mesh" class="portfolio-img">
-        <div class="portfolio-info">
-          <h3 class="portfolio-title">Redes Mesh (Sem Pontos Cegos)</h3>
-          <p class="portfolio-desc">Expansão de cobertura Wi-Fi inteligente para sobrados e edículas, garantindo máxima estabilidade de conexão.</p>
-        </div>
-      </div>
-
-      <!-- Item 5: Cybersecurity -->
-      <div class="portfolio-item">
-        <img src="1001074597.png" alt="Cybersecurity" class="portfolio-img">
-        <div class="portfolio-info">
-          <h3 class="portfolio-title">Cybersecurity Empresarial</h3>
-          <p class="portfolio-desc">Proteção avançada de dados, encriptação, conformidade com a LGPD e defesa ativa contra ataques maliciosos.</p>
-        </div>
-      </div>
-
-      <!-- Item 6: Inteligência Artificial -->
-      <div class="portfolio-item">
-        <img src="1001074596.png" alt="IA e Machine Learning" class="portfolio-img">
-        <div class="portfolio-info">
-          <h3 class="portfolio-title">IA & Machine Learning</h3>
-          <p class="portfolio-desc">Implementação de algoritmos cognitivos, visão computacional e análise de Big Data para o seu negócio.</p>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -849,7 +749,7 @@
     </div>
   </section>
 
-  <!-- Rodapé (Contato e Redes Sociais Restauradas e Destacadas) -->
+  <!-- Rodapé (Com Email, WhatsApp e Redes Sociais) -->
   <footer id="contato" class="cyber-footer">
     <div class="footer-content">
       <div class="footer-col">
@@ -922,10 +822,11 @@
     </div>
   </div>
 
+  <!-- Scripts: Lógica de Botões, Seleções e Login -->
   <script>
     const selectedServices = new Set();
 
-    // Seleção de serviços normais
+    // Seleção de serviços normais para o Orçamento
     function toggleService(card, serviceName) {
       card.classList.toggle('selected');
       if (selectedServices.has(serviceName)) {
@@ -977,17 +878,16 @@
       closeModal('quoteModal');
     }
 
-   // Autenticação de Login Melhorada (Ignora espaços acidentais)
+    // Autenticação de Login atualizada (Charles Aranna / Ar@nna91)
     function handleLogin(e) {
       e.preventDefault();
       
-      // O .trim() remove espaços em branco que o teclado ou o "copiar e colar" colocam sem querer no final
-      const user = document.getElementById('loginUser').value.trim();
-      const pass = document.getElementById('loginPass').value.trim();
+      const user = document.getElementById('loginUser').value;
+      const pass = document.getElementById('loginPass').value;
 
-      // Validação exata de usuário e senha
+      // Validação exata de usuário e senha ATUALIZADA
       if (user === 'Charles Aranna' && pass === 'Ar@nna91') {
-        alert('✅ Acesso Concedido. Bem-vindo, Admin.');
+        alert('✅ Acesso Concedido. Bem-vindo, Charles Aranna.');
         closeModal('loginModal');
         
         // Revela a seção secreta de projetos
@@ -1002,8 +902,6 @@
         document.getElementById('loginPass').value = '';
       } else {
         alert('❌ Acesso Negado: Usuário ou senha incorretos.');
-      }
-    }
       }
     }
   </script>
