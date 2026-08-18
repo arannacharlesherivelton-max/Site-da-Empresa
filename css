@@ -1,48 +1,41 @@
-.hero {
-  position: relative;
-  /* 'dvh' (dynamic viewport height) é o padrão moderno. */
-  min-height: 100dvh; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  /* ❌ O PROBLEMA ESTAVA AQUI: overflow: hidden; cortava janelas e menus que passavam do limite. */
-  /* ✅ SOLUÇÃO: Remover ou comentar o overflow. */
-  /* overflow: hidden; */ 
+.hero{
 
-  padding: 2rem; /* Respiro de segurança para celulares */
-  
-  /* ✅ ADIÇÃO RECOMENDADA: Cria um contexto de empilhamento baixo. 
-     Isso garante que suas janelas (modais) com z-index maior (ex: 10, 100) fiquem por cima dele. */
-  z-index: 1; 
+position:relative;
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+overflow:hidden;
+
 }
 
-.hero-grid {
-  display: grid;
-  /* Grid Fluido Inteligente: Fica 1 coluna no celular e 2 colunas no PC automaticamente */
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
-  /* Usa clamp para que o espaçamento cresça e diminua suavemente com a tela */
-  gap: clamp(2rem, 5vw, 4rem); 
-  align-items: center;
-  width: 100%;
-  max-width: 1440px; /* Evita que o grid estique infinitamente em monitores ultrawide */
+.hero-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:60px;
+
+align-items:center;
+
 }
 
-.hero h1 {
-  /* Tipografia Fluida (Clamp) */
-  font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
-  line-height: 1.1;
-  margin-bottom: clamp(1rem, 2vw, 1.5rem);
-  
-  /* Modernidade Visual: Texto com gradiente do branco para o Ciano Neon */
-  background: linear-gradient(to right, #FFFFFF, var(--cyan-neon, #00F0FF));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.hero h1{
+
+font-size:64px;
+
+line-height:1.1;
+
+margin-bottom:20px;
+
 }
 
-.hero h1 span {
-  display: block;
-  /* Destaque sutil para quebras de linha dentro do h1 */
-  text-shadow: 0 0 20px rgba(0, 240, 255, 0.3); 
-}
+.hero h1 span{
+
+display:block;
+ 
+Modernize está parte do código
