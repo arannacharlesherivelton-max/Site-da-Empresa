@@ -884,9 +884,15 @@
       
       const user = document.getElementById('loginUser').value;
       const pass = document.getElementById('loginPass').value;
+// Autenticação de Login Melhorada (Ignora espaços acidentais)
+    function handleLogin(e) {
+      e.preventDefault();
+      
+      const user = document.getElementById('loginUser').value.trim();
+      const pass = document.getElementById('loginPass').value.trim();
 
-      // Validação exata de usuário e senha ATUALIZADA
-      if (user === 'Charles Aranna' && pass === 'Ar@nna91') {
+      // Validação exata de usuário e senha atualizada
+      if (user === 'Charles H. Aranna' && pass === 'Art3mis_0rbit!') {
         alert('✅ Acesso Concedido. Bem-vindo, Admin.');
         closeModal('loginModal');
         
@@ -902,6 +908,8 @@
         document.getElementById('loginPass').value = '';
       } else {
         alert('❌ Acesso Negado: Usuário ou senha incorretos.');
+      }
+    }
       }
     }
   </script>
