@@ -822,11 +822,9 @@
     </div>
   </div>
 
-  <!-- Scripts: Lógica de Botões, Seleções e Login -->
-  <script>
+ <script>
     const selectedServices = new Set();
 
-    // Seleção de serviços normais para o Orçamento
     function toggleService(card, serviceName) {
       card.classList.toggle('selected');
       if (selectedServices.has(serviceName)) {
@@ -837,7 +835,6 @@
       updateModalSummary();
     }
 
-    // Alerta para serviços bloqueados
     function alertLocked() {
       alert("Serviço em fase de estruturação e bloqueado no momento. Em breve estará disponível no catálogo.");
     }
@@ -845,12 +842,10 @@
     function updateModalSummary() {
       const listElement = document.getElementById('selectedList');
       listElement.innerHTML = '';
-      
       if (selectedServices.size === 0) {
         listElement.innerHTML = '<li style="color: #707B8C;">Nenhum serviço selecionado no painel.</li>';
         return;
       }
-
       selectedServices.forEach(service => {
         const li = document.createElement('li');
         li.textContent = service;
@@ -858,58 +853,38 @@
       });
     }
 
-    // Controle de Modais
-    function openModal() {
-      document.getElementById('quoteModal').classList.add('active');
-    }
+    function openModal() { document.getElementById('quoteModal').classList.add('active'); }
+    function openLoginModal() { document.getElementById('loginModal').classList.add('active'); }
+    function closeModal(modalId) { document.getElementById(modalId).classList.remove('active'); }
 
-    function openLoginModal() {
-      document.getElementById('loginModal').classList.add('active');
-    }
-
-    function closeModal(modalId) {
-      document.getElementById(modalId).classList.remove('active');
-    }
-
-    // Submissão do Orçamento
     function handleSubmit(e) {
       e.preventDefault();
       alert('Solicitação enviada com sucesso! Nossa equipe entrará em contato.');
       closeModal('quoteModal');
     }
 
-    // Autenticação de Login atualizada (Charles Aranna / Ar@nna91)
     function handleLogin(e) {
       e.preventDefault();
       
-      const user = document.getElementById('loginUser').value;
-      const pass = document.getElementById('loginPass').value;
-// Autenticação de Login Melhorada (Ignora espaços acidentais)
-    function handleLogin(e) {
-      e.preventDefault();
-      
+      // Remove espaços acidentais invisíveis no final da digitação
       const user = document.getElementById('loginUser').value.trim();
       const pass = document.getElementById('loginPass').value.trim();
 
-      // Validação exata de usuário e senha atualizada
-      if (user === 'Charles H. Aranna' && pass === 'Art3mis_0rbit!') {
+      console.log("Tentativa de login detectada.");
+
+      // A validação exata
+      if (user === 'Charles Aranna' && pass === 'Ar@nna91') {
         alert('✅ Acesso Concedido. Bem-vindo, Admin.');
         closeModal('loginModal');
         
-        // Revela a seção secreta de projetos
         const painelProjetos = document.getElementById('painel-projetos');
         painelProjetos.style.display = 'block';
-        
-        // Rola a página suavemente até os projetos
         painelProjetos.scrollIntoView({ behavior: 'smooth' });
         
-        // Limpa os campos por segurança
         document.getElementById('loginUser').value = '';
         document.getElementById('loginPass').value = '';
       } else {
         alert('❌ Acesso Negado: Usuário ou senha incorretos.');
-      }
-    }
       }
     }
   </script>
