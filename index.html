@@ -896,14 +896,16 @@
       closeModal('quoteModal');
     }
 
-    // Autenticação de Login com validação das credenciais exigidas
+   // Autenticação de Login Melhorada (Ignora espaços acidentais)
     function handleLogin(e) {
       e.preventDefault();
       
-      const user = document.getElementById('loginUser').value;
-      const pass = document.getElementById('loginPass').value;
+      // O .trim() remove espaços em branco que o teclado ou o "copiar e colar" colocam sem querer no final
+      const user = document.getElementById('loginUser').value.trim();
+      const pass = document.getElementById('loginPass').value.trim();
 
-      if (user === 'Charles Aranna' && pass === '911520;') {
+      // Validação exata de usuário e senha
+      if (user === 'Charles Aranna' && pass === 'Ar@nna91') {
         alert('✅ Acesso Concedido. Bem-vindo, Admin.');
         closeModal('loginModal');
         
@@ -919,6 +921,8 @@
         document.getElementById('loginPass').value = '';
       } else {
         alert('❌ Acesso Negado: Usuário ou senha incorretos.');
+      }
+    }
       }
     }
   </script>
